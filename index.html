@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Հարսանեկան հրավիրատոմս</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background-color: #fff;
+      color: #333;
+      text-align: center;
+    }
+
+    .hero {
+      background-image: url('https://raw.githubusercontent.com/yourusername/yourrepo/main/yourimage.png');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 3em;
+      background-color: rgba(0,0,0,0.4);
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+
+    .section {
+      padding: 40px 20px;
+    }
+
+    .countdown {
+      font-size: 2em;
+      margin-top: 20px;
+    }
+
+    .rsvp-buttons {
+      margin-top: 30px;
+    }
+
+    .rsvp-buttons button {
+      font-size: 1.2em;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background-color: #caa1d3;
+      color: white;
+    }
+
+    .info {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <h1>Մելինե & Ռոբերտ</h1>
+    <p>Հարսանյաց հրավեր</p>
+  </div>
+
+  <div class="section">
+    <h2>📅 Հուլիսի 30</h2>
+    <div class="info">
+      <p>⛪ Եկեղեցի՝ Սուրբ Հռիփսիմե, ժամը 15:00</p>
+      <p>🍽️ Ռեստորան՝ Ֆլորենս, ժամը 18:00</p>
+    </div>
+    <div class="countdown" id="countdown">Հետհաշվարկ...</div>
+
+    <div class="rsvp-buttons">
+      <button onclick="alert('Շնորհակալ ենք, սպասում ենք Ձեզ 😊')">Գալու եմ</button>
+      <button onclick="alert('Ցավում ենք, որ չեք կարող գալ 😢')">Չեմ գալու</button>
+    </div>
+  </div>
+
+  <script>
+    // Հետհաշվարկ մինչև հուլիսի 30-ը
+    const countdownElement = document.getElementById('countdown');
+    const targetDate = new Date('2025-07-30T15:00:00').getTime();
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        countdownElement.innerHTML = "🎉 Հարսանիքը սկսվել է!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownElement.innerHTML = `Մնացել է՝ ${days} օր ${hours} ժ ${minutes} ր ${seconds} վ`;
+    }, 1000);
+  </script>
+
+</body>
+</html>
